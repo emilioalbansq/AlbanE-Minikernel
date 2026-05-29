@@ -1,0 +1,212 @@
+[GENERADOR DE PROCESOS] Proceso PID 1 creado
+Burst Time: 7
+Arrival Time: 2
+Priority: 1
+State: 0
+----------------------------------
+
+[CPU 1] Toma el proceso
+== PID: 1 ==
+- Remaining Time: 7
+- State: 1
+
+[GENERADOR DE PROCESOS] Proceso PID 2 creado
+Burst Time: 6
+Arrival Time: 1
+Priority: 2
+State: 0
+----------------------------------
+
+[CPU 2] Toma el proceso
+== PID: 2 ==
+- Remaining Time: 6
+- State: 1
+
+[CPU 1] Quantum terminado
+[CPU 1] Proceso 1 vuelve a READY
+Remaining time: 5
+------------------------------------------------
+
+[CPU 1] Toma el proceso
+== PID: 1 ==
+- Remaining Time: 5
+- State: 1
+
+[CPU 1] Quantum terminado
+[CPU 1] Proceso 1 vuelve a READY
+Remaining time: 3
+
+[CPU 2] Quantum terminado
+[CPU 2] Proceso 2 vuelve a READY
+Remaining time: 4
+------------------------------------------------
+
+[CPU 2] Toma el proceso
+== PID: 1 ==
+- Remaining Time: 3
+- State: 1
+------------------------------------------------
+
+[CPU 1] Toma el proceso
+== PID: 2 ==
+- Remaining Time: 4
+- State: 1
+
+[CPU 2] Quantum terminado
+[CPU 2] Proceso 1 vuelve a READY
+Remaining time: 1
+------------------------------------------------
+
+[CPU 2] Toma el proceso
+== PID: 1 ==
+- Remaining Time: 1
+- State: 1
+
+[CPU 1] Quantum terminado
+[CPU 1] Proceso 2 vuelve a READY
+Remaining time: 2
+------------------------------------------------
+
+[CPU 1] Toma el proceso
+== PID: 2 ==
+- Remaining Time: 2
+- State: 1
+
+[GENERADOR DE PROCESOS] Proceso PID 3 creado
+Burst Time: 6
+Arrival Time: 3
+Priority: 3
+State: 0
+----------------------------------
+
+[CPU 3] Toma el proceso
+== PID: 3 ==
+- Remaining Time: 6
+- State: 1
+
+[CPU 2] Proceso 1 FINALIZADO
+* Response Time PID 1: 0.00 segundos
+------------------------------------------------
+
+[CPU 1] Proceso 2 FINALIZADO
+* Response Time PID 2: 0.00 segundos
+------------------------------------------------
+
+[CPU 3] Quantum terminado
+[CPU 3] Proceso 3 vuelve a READY
+Remaining time: 4
+------------------------------------------------
+
+[CPU 3] Toma el proceso
+== PID: 3 ==
+- Remaining Time: 4
+- State: 1
+
+[GENERADOR DE PROCESOS] Proceso PID 4 creado
+
+[CPU 3] Quantum terminado
+[CPU 3] Proceso 3 vuelve a READY
+Remaining time: 2
+
+------------------------------------------------
+Burst Time: 3
+Arrival Time: 2
+Priority: 4
+State: 0
+----------------------------------
+
+[CPU 3] Toma el proceso
+== PID: 3 ==
+- Remaining Time: 2
+- State: 1
+[CPU 1] Toma el proceso
+== PID: 4 ==
+- Remaining Time: 3
+- State: 1
+
+[GENERADOR DE PROCESOS] Proceso PID 5 creado
+Burst Time: 2
+Arrival Time: 1
+Priority: 5
+State: 0
+----------------------------------
+
+[CPU 3] Proceso 3 FINALIZADO
+
+[CPU 2] Toma el proceso
+== PID: 5 ==
+- Remaining Time: 2
+- State: 1
+
+[CPU 1] Quantum terminado
+[CPU 1] Proceso 4 vuelve a READY
+Remaining time: 1
+------------------------------------------------
+
+[CPU 1] Toma el proceso
+* Response Time PID 3: 0.00 segundos
+------------------------------------------------
+== PID: 4 ==
+- Remaining Time: 1
+- State: 1
+
+[CPU 2] Proceso 5 FINALIZADO
+* Response Time PID 5: 0.00 segundos
+------------------------------------------------
+
+[CPU 1] Proceso 4 FINALIZADO
+* Response Time PID 4: 0.00 segundos
+------------------------------------------------
+
+[GENERADOR DE PROCESOS] Proceso PID 6 creado
+Burst Time: 8
+Arrival Time: 3
+Priority: 6
+State: 0
+----------------------------------
+
+[CPU 3] Toma el proceso
+== PID: 6 ==
+- Remaining Time: 8
+- State: 1
+
+[CPU 3] Quantum terminado
+[CPU 3] Proceso 6 vuelve a READY
+Remaining time: 6
+------------------------------------------------
+
+[CPU 3] Toma el proceso
+== PID: 6 ==
+- Remaining Time: 6
+- State: 1
+
+[CPU 3] Quantum terminado
+[CPU 3] Proceso 6 vuelve a READY
+Remaining time: 4
+------------------------------------------------
+
+[CPU 3] Toma el proceso
+== PID: 6 ==
+- Remaining Time: 4
+- State: 1
+
+[CPU 3] Quantum terminado
+[CPU 3] Proceso 6 vuelve a READY
+Remaining time: 2
+------------------------------------------------
+
+[CPU 3] Toma el proceso
+== PID: 6 ==
+- Remaining Time: 2
+- State: 1
+
+[CPU 3] Proceso 6 FINALIZADO
+* Response Time PID 6: 0.00 segundos
+------------------------------------------------
+
+TODOS LOS PROCESOS TERMINARON
+
+========== METRICAS ==========
+* Throughput: 0.38 procesos/seg
+* Procesos Terminados: 6
+=============================
