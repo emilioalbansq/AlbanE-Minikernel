@@ -16,17 +16,13 @@
 void* cpu(void* arg);
 
 int main(){
+
+    inicio_sistema = time(NULL); //almacena el tiempo actual con el que inicia el programa
     // Inicializa el mutex para proteger la cola de race conditions
     pthread_mutex_init(&mutex_cola, NULL);
     pthread_cond_init(&condicion_cola,NULL);
 
-    // =========================
-    // HILO GENERADOR DE PROCESOS
-    // =========================
     pthread_t generador;
-    pthread_create(&generador, NULL, generador_procesos, NULL);
-    pthread_join(generador, NULL);
-
     pthread_t cpus[NUM_CPUS];
     int ids[NUM_CPUS];
 
@@ -37,6 +33,9 @@ int main(){
         ids[i] = i + 1;
         pthread_create(&cpus[i],NULL,cpu,&ids[i]);
     }
+    // HILO GENERADOR DE PROCESOS
+    pthread_create(&generador, NULL, generador_procesos, NULL);
+    pthread_join(generador, NULL);
     for(int i = 0; i < NUM_CPUS; i++){
         pthread_join(cpus[i], NULL);
     }
@@ -47,6 +46,8 @@ int main(){
 
     printf("\n");
     printf("TODOS LOS PROCESOS TERMINARON\n");
+    mostrar_metricas();
+
 
     return 0;
 }
@@ -83,7 +84,7 @@ void* generador_procesos(void* arg){
         tiempo_llegada[proceso.pid] = time(NULL); // Registra el tiempo de llegada del proceso
 
         enqueue(proceso);
-
+	
         printf("\n");
 
         printf("[GENERADOR DE PROCESOS] Proceso PID %d creado\n",proceso.pid);
@@ -97,7 +98,11 @@ void* generador_procesos(void* arg){
         printf("State: %d\n",proceso.state);
 
         printf("----------------------------------\n");
+
     }
 
+    generador_terminado = 1; //Indica que el generador ha terminado de realizar todos los procesos
+
+    pthread_cond_broadcast(&condicion_cola); //Despierta todas las CPUs
     return NULL;
 }

@@ -10,6 +10,7 @@ int frente = 0;
 int final = 0;
 int cantidad = 0;
 pthread_cond_t condicion_cola;
+int generador_terminado = 0;
 pthread_mutex_t mutex_cola;
 
 
@@ -52,6 +53,11 @@ PCB dequeue(){
     PCB proceso;
 
     while(cantidad == 0){
+	if (generador_terminado == 1){
+		proceso.pid = -1;
+		pthread_mutex_unlock(&mutex_cola);
+		return proceso;
+	}
         pthread_cond_wait(&condicion_cola,&mutex_cola); // Espera a que haya procesos en la cola
     }
     // Toma el proceso del frente
@@ -67,14 +73,4 @@ PCB dequeue(){
     pthread_mutex_unlock(&mutex_cola);
 
     return proceso;
-}
-
-
-// Verifica si la cola está vacía
-int cola_vacia(){
-    if(cantidad == 0){
-        return 1;
-    }
-
-    return 0;
 }

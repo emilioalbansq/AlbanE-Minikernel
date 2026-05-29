@@ -22,6 +22,6 @@ void enqueue(PCB proceso); //Ingresar un proceso a la cola
 
 PCB dequeue(); //Sacar un proceso de la cola
 
-int cola_vacia(); // Verificar si la cola está vacía
+
 
 #endif

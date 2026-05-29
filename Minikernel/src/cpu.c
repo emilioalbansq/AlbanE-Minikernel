@@ -14,10 +14,14 @@ void* cpu(void* arg){ //Lo que ejecutará cada hilo CPU
     int id_cpu = *(int*)arg;
 
     //Round Robin
-    while(!cola_vacia()){
+    while(1){
         PCB proceso_actual;
-
+	
         proceso_actual = dequeue();
+	
+	if(proceso_actual.pid == -1){
+		break; //Significa que ya no habrá más procesos, por lo tanto las cpus ya no tomarán mas procesos ejecutables
+	}
 
         // Estado RUNNING
         proceso_actual.state = RUNNING;
@@ -63,6 +67,7 @@ void* cpu(void* arg){ //Lo que ejecutará cada hilo CPU
 
             printf("[CPU %d] Proceso %d FINALIZADO\n",id_cpu,proceso_actual.pid);
             printf("* Response Time PID %d: %.2f segundos\n",proceso_actual.pid,response_time[proceso_actual.pid]);
+	    procesos_terminados++;
         } else{
             proceso_actual.state = READY;
 
@@ -70,7 +75,7 @@ void* cpu(void* arg){ //Lo que ejecutará cada hilo CPU
 
             printf("[CPU %d] Quantum terminado\n",id_cpu);
 
-            printf("[CPU %d] Proceso %d vuelve a READY\n",id_cpu,proceso_actual.pid);
+            printf("[CPU %d] Proceso %d vuelve a READY\nRemaining time: %d\n",id_cpu,proceso_actual.pid,proceso_actual.remaining_time);
 
             enqueue(proceso_actual);
         }
