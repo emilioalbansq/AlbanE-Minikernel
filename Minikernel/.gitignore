@@ -1,0 +1,16 @@
+# Ejecutable
+
+minikernel
+
+# Archivos objeto
+
+*.o
+
+# Temporales
+
+*.swp
+
+# Zone Identifier
+
+*:Zone.Identifier
+
