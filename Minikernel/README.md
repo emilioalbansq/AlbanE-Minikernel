@@ -1,5 +1,5 @@
 # MiniKernel - Scheduler Round Robin
-
+Nombre: Albán Emilio
 ## Descripción
 
 MiniKernel es una simulación básica de un sistema operativo realizada en C utilizando hilos POSIX.
